@@ -1,4 +1,3 @@
-import './App.css';
 import FormCaculator from './components/FormCaculator';
 import styled from 'styled-components'
 

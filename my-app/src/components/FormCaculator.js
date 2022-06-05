@@ -1,29 +1,32 @@
-import {useState} from 'react'
+import { useState } from 'react'
 import styled from 'styled-components'
 
 
 //Testing
 // 1. Should show initialstate correctly (all input values and results should equal to 0)
 // 2. Should replace the initial state with input numbers
-// 3. Should not be able to input string, accept only numbers
-// 4. Should not change display when the caculation result appears
-// 5. The income result should equal the input income
-// 6. Total time based cost = price per hour * hours (15 * 2 = 30)
-// 7. Total distance based cost = price per km * km (20 * 2 = 40)
-// 8. Profitability = income - (total based cost + distance based cost)
-// 8a.Profitability caculation example:  2000 - (120 + 200) = 1680
-// 9. If the profit value is a interger number, it should ground to 2 digits (2384.9339393 = 2384.93)
+// 3. Input values should not be less than 0
+// 4. Should not be able to input string, accept only numbers
+// 5. Should not change display when the caculation result appears
+// 6. The income result should equal the input income
+// 7. Total time based cost = price per hour * hours (15 * 2 = 30)
+// 8. Total distance based cost = price per km * km (20 * 2 = 40)
+// 9. Profitability = income - (total time based cost + total distance based cost)
+// 9a.Profitability caculation example:  2000 - (120 + 200) = 1680
+// 10. If the profit value is a interger number, it should ground to 2 digits (2384.9339393 = 2384.93)
 
 
 
 const FormCaculator = () => {
 
+    //Set up initial state to update the value later when the input changes
     const [distance, setDistance] = useState(0);
     const [hours, setHours] = useState(0);
     const [pricePerHour, setPricePerHour] = useState(0);
     const [pricePerKm, setPricePerKm] = useState(0);
     const [income, setIncome] = useState(0);
 
+    //Formular to caculate the profitability
     const profitability = income - ((distance*pricePerKm) + (hours*pricePerHour));
 
     return (
@@ -62,7 +65,6 @@ const FormCaculator = () => {
                     </Label>
                 </LabelContainer>
                 <LabelContainer>
-
                     <Label htmlFor='hours'>
                         Time (hours)
                         <input 
@@ -87,12 +89,23 @@ const FormCaculator = () => {
             </BoardContainer>
             <ResultContainer>
                 <Data>
-                    <ResultDetail>Income: <span>{income} $</span></ResultDetail>
-                    <ResultDetail>Total distance based cost: <span>{(distance*pricePerKm)} $</span></ResultDetail>
-                    <ResultDetail>Total time based cost: <span>{hours*pricePerHour} $</span></ResultDetail>
+                    <ResultDetail>Income: 
+                        <span>{income} $</span>
+                    </ResultDetail>
+                    <ResultDetail>
+                        Total distance based cost: 
+                        <span>{(distance*pricePerKm)} $</span>
+                    </ResultDetail>
+                    <ResultDetail>
+                        Total time based cost: 
+                        <span>{hours*pricePerHour} $</span>
+                    </ResultDetail>
                 </Data>
                 <Profit>
-                    <ProfitResult>Profitability: <span>{profitability.toFixed(2)} $</span></ProfitResult>
+                    <ProfitResult>
+                        Profitability: 
+                        <span>{profitability.toFixed(2)} $</span>
+                    </ProfitResult>
                 </Profit>
             </ResultContainer>
         </Form>
@@ -101,6 +114,7 @@ const FormCaculator = () => {
 
 export default FormCaculator
 
+//Styling using style components
 const Form = styled.form`
     display: flex;
     flex-direction: row;
