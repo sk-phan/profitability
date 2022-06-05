@@ -16,7 +16,6 @@ import styled from 'styled-components'
 // 10. If the profit value is a interger number, it should ground to 2 digits (2384.9339393 = 2384.93)
 
 
-
 const FormCaculator = () => {
 
     //Set up initial state to update the value later when the input changes
