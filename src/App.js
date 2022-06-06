@@ -22,7 +22,7 @@ const Logo = styled.img`
 function App() {
   return (
     <Container>
-      <Logo src='https://diffosolutions.com/wp-content/uploads/2021/11/diffo-platform-logo.png' alt='Diffo Solution Logo' />
+      <Logo src='https://diffosolutions.com/wp-content/uploads/2021/11/diffo-platform-logo.png' alt='Diffo Solutions Logo' />
       <FormCaculator />
     </Container>
   );
